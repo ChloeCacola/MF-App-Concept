@@ -1,5 +1,5 @@
 # Requirements
-NPM
+**Node | NPM**
 
 run `npm install` after cloning
 
