@@ -1,0 +1,21 @@
+<div class="col-sm-12 col-md-12 dashboard-container">
+
+  <div class="widget-container" *ngIf="userWidgets.length > 0">
+    <div class="widgets"
+      *ngFor="let widget of userWidgets"
+      [ngStyle]="{backgroundColor: widget.color}"
+      appMoveable
+      (dragStart)="onDragStart($event)"
+      (dragMove)="onDragMove($event)"
+      (dragEnd)="onDragEnd($event)">
+      {{ widget.name }}
+    </div>
+  </div>
+
+  <div class="widget-container" *ngIf="userWidgets.length === 0">
+    <div class="no-widgets">
+      Add some widgets to your dashboard.
+    </div>
+  </div>
+
+</div>

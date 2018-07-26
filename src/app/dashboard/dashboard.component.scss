@@ -1,0 +1,42 @@
+
+.dashboard-container {
+    height: 90%;
+    width: 100vw;
+    overflow: auto;
+    padding: 20px 0px 0px 20px;
+}
+
+.no-widgets {
+    border: 1px solid black;
+    padding : 10px 20px;
+    display: inline-block;
+    margin: 0 auto;
+}
+.no-widget-container {
+    width: 100vw;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    overflow-y: auto;
+}
+
+.widgets {
+    border: 2px solid #555;
+    padding: 10px 20px;
+    display: inline-block;
+    margin: 10px;
+    &.dragging {
+        background-color: coral!important;
+        opacity: 0.4;
+    }
+}
+.widget-container {
+    width: w00vh;
+
+}
+
+.draggable-rx, .draggable {
+    cursor: move;
+    user-select: none;
+}
+

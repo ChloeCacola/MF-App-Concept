@@ -1,0 +1,49 @@
+$light-color: #f4f3ef;
+
+
+.dropdown-menu.show {
+    float: left!important;
+    align-content: left;
+    left: 0;
+}
+
+.navbar-expand-sm .navbar-nav .dropdown-menu {
+    left: -115px!important;
+}
+
+nav {
+    border-bottom: 0.5px solid #3c3c3c57;
+    background-color: $light-color;
+}
+
+img {
+    border: 2px solid #dbdad7;
+    margin-right:10px;
+}
+
+img:hover {
+    cursor: pointer;
+}
+
+.dropdown-toggle::before,
+.dropdown-toggle::after {
+    content: none!important;
+}
+
+img.notifs {
+    margin-right: 25px;
+    color: rgb(255, 255, 255);
+    border: none;
+}
+
+div.notifs{
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='../assets/images/bell-regular.svg' width='25' height='25' fill='%23F00'></svg>");
+}
+.nav-item.notifs {
+    padding: 0px;
+    padding-top: 15px;
+}
+
+.nav-link.notifs {
+    padding: 0px;
+}

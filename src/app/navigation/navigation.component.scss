@@ -1,0 +1,141 @@
+$light-color: #f4f3ef;
+
+li {
+    margin: 0px;
+    width: 100%;
+    border: 2px solid transparent;
+    background-color: #3c3c3c;
+}
+
+#mainNav, ul {
+    background-color: #3c3c3c;
+    height:100%;
+    margin:0px;
+    padding:0px!important;
+}
+
+a {
+    text-decoration: none;
+    color: $light-color;
+    display: block;
+    line-height: 60px;
+    padding-left: 30px;
+}
+
+i::after {
+    content: "\00a0";
+}
+
+a.navbar-brand {
+    padding-left: 0px;
+}
+
+li.active>a {
+
+    color: #3c3c3c!important;
+}
+
+.center {
+    text-align: center;
+    padding: 10px;
+}
+
+hr {
+    margin: 20px 0px 2px 0px;
+    border: 1px solid rgba(255, 255, 255, 0.11)
+}
+
+/* The animation code */
+@keyframes hover_border {
+    0% {
+      border-left-color: transparent;
+    }
+    100% {
+      border-left-color: $light-color;
+      background-color: #353535;
+    }
+  }
+
+  @keyframes not_hover_border {
+    0% {
+      border-left-color: $light-color;
+    }
+    100% {
+      border-left-color: transparent;
+    }
+  }
+
+li:hover {
+    animation-name: hover_border;
+    animation-duration: 500ms;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    /* animation-iteration-count: infinite; */
+    border-left: 4px solid $light-color;
+    background-color: #353535;
+}
+
+li:not(:hover) {
+    animation-name: not_hover_border;
+    animation-duration: 300ms;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+    /* animation-iteration-count: infinite; */
+    cursor: pointer;
+    border-left: 4px solid transparent;
+}
+
+li.active:not(:hover) {
+    animation-name: none;
+}
+
+li.active:hover {
+    animation-name: none;
+}
+
+li.active {
+    background-color: $light-color;
+    width: 100%;
+    /* optional partial shadow */
+    box-shadow: -3px 40px 9px 0px black;
+
+    /* alternative darker color for 'elevated effect' */
+    /* (comment out above) */
+    /* background-color: #e0dede;
+    width: 100%;
+    box-shadow: 0 0 0 4px #e0dede; */
+}
+
+@media only screen and (max-width: 945px) {
+    a {
+        padding-left: 10px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+span.nav-text {
+    display: none;
+}
+
+a {
+    padding-left: 0px;
+}
+
+#mainNav, ul {
+    text-align: center;
+    width: 75px;
+}
+
+}
+
+@media only screen and (max-width: 576px) {
+    #mainNav, ul {
+        text-align: center;
+        width: 100%;
+    }
+
+    span.nav-text {
+        display: inline;
+    }
+}
