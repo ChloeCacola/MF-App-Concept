@@ -14,10 +14,10 @@ interface Position {
 // moveable will inherit the draggable directive so that appDraggable is not needed in addition to appMoveable
 export class MoveableDirective extends DraggableDirective {
   // where the el. gets moved to
-  private position = {x: 0, y: 0};
+  private position: Position = {x: 0, y: 0};
 
   // initial position
-  private startPosition = {x: 0, y: 0};
+  private startPosition: Position;
 
   // alter position (safestyle needed for angular trust)
   @HostBinding('style.transform') get transform(): SafeStyle {
