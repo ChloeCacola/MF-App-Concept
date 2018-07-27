@@ -13,11 +13,14 @@ interface Position {
 })
 // moveable will inherit the draggable directive so that appDraggable is not needed in addition to appMoveable
 export class MoveableDirective extends DraggableDirective {
+
   // where the el. gets moved to
   private position: Position = {x: 0, y: 0};
-
   // initial position
   private startPosition: Position;
+
+  // used to determine reseting the positions
+  private reset = true;
 
   // alter position (safestyle needed for angular trust)
   @HostBinding('style.transform') get transform(): SafeStyle {
@@ -25,6 +28,9 @@ export class MoveableDirective extends DraggableDirective {
       `translateX(${this.position.x}px) translateY(${this.position.y}px)`
     );
   }
+  // add moveable class to identify moveable elements
+  @HostBinding('class.moveable') moveable = true;
+
 
   // mark position as safe with sanitizer
   constructor(private sanitizer: DomSanitizer) {
@@ -48,7 +54,9 @@ export class MoveableDirective extends DraggableDirective {
   }
 
   @HostListener('dragEnd', ['$event'])onDragEnd(event: PointerEvent) {
-    console.log('end move');
+    if (this.reset) {
+      this.position = {x: 0, y: 0};
+    }
   }
 
 }

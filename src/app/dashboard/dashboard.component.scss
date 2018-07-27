@@ -40,3 +40,7 @@
     user-select: none;
 }
 
+// smoothing the transition
+.moveable:not(.dragging) {
+    transition: transform 300ms ease-in-out;
+}
