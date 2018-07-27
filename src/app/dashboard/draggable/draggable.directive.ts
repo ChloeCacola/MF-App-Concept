@@ -8,16 +8,18 @@ export class DraggableDirective {
   constructor() { }
 
   @HostBinding('class.draggable') draggable = true;
+  @HostBinding('class.dragging') dragging = false;
 
   @Output() dragStart = new EventEmitter<PointerEvent>();
   @Output() dragMove = new EventEmitter<PointerEvent>();
   @Output() dragEnd = new EventEmitter<PointerEvent>();
 
-  @HostBinding('class.dragging') dragging = false;
 
   // emit the drag start event when user first click and holds a widget
   @HostListener('pointerdown', ['$event']) onPointerDown(event: PointerEvent): void {
     this.dragging = true;
+    // prevents click of two elements at the same time on nested elements that are moveable
+    event.stopPropagation();
     this.dragStart.emit(event);
   }
   // emit the drag move event when moving so long as dragging is true

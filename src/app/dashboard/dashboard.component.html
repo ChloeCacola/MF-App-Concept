@@ -1,10 +1,11 @@
 <div class="col-sm-12 col-md-12 dashboard-container">
 
-  <div class="widget-container" *ngIf="userWidgets.length > 0">
+  <div class="widget-container" style="border: 2px solid black" appMoveable *ngIf="userWidgets.length > 0">
     <div class="widgets"
       *ngFor="let widget of userWidgets"
       [ngStyle]="{backgroundColor: widget.color}"
       appMoveable
+      [resetPosition]="true"
       (dragStart)="onDragStart($event)"
       (dragMove)="onDragMove($event)"
       (dragEnd)="onDragEnd($event)">

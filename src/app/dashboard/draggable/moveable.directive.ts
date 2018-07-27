@@ -1,5 +1,5 @@
 import { DraggableDirective } from './draggable.directive';
-import { Directive, HostListener, HostBinding } from '@angular/core';
+import { Directive, HostListener, HostBinding, Input } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 // defining position (where the element gets moved to)
@@ -19,10 +19,12 @@ export class MoveableDirective extends DraggableDirective {
   // initial position
   private startPosition: Position;
 
-  // used to determine reseting the positions
-  private reset = true;
+  // used to determine reseting positions
+  // tip: use [resetPosition]="true" on element to reset
+  @Input('resetPosition') resetPosition = false;
 
   // alter position (safestyle needed for angular trust)
+  // TO DO:  Use Renderer2 here instead to eliminate need to sanitize!
   @HostBinding('style.transform') get transform(): SafeStyle {
     return this.sanitizer.bypassSecurityTrustStyle(
       `translateX(${this.position.x}px) translateY(${this.position.y}px)`
@@ -54,7 +56,7 @@ export class MoveableDirective extends DraggableDirective {
   }
 
   @HostListener('dragEnd', ['$event'])onDragEnd(event: PointerEvent) {
-    if (this.reset) {
+    if (this.resetPosition) {
       this.position = {x: 0, y: 0};
     }
   }
